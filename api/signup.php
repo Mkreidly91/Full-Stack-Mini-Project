@@ -26,3 +26,4 @@ if($email_exists == 0){
 }
 
 echo json_encode($response);
+
