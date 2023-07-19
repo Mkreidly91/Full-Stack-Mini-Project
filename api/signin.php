@@ -1,15 +1,15 @@
 <?php
 include('connection.php');
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
 $query = $mysqli->prepare('select email,password
 from users 
-where username=?');
-$query->bind_param('s', $username);
+where email=?');
+$query->bind_param('s', $email);
 $query->execute();
 $query->store_result();
-$query->bind_result( $username,$hashed_password);
+$query->bind_result( $email, $hashed_password);
 $query->fetch();
 
 $num_rows = $query->num_rows();
@@ -18,8 +18,9 @@ if ($num_rows == 0) {
 } else {
     if (password_verify($password, $hashed_password)) {
         $response['status'] = 'logged in';
-        $response['email'] = $first_name;
-       
+        $response['user_id'] = $id;
+        $response['first_name'] = $first_name;
+        $response['email'] = $email;
     } else {
         $response['status'] = "wrong password";
     }
