@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+
+  <body class="min-vh-100 d-flex flex-column">
+    <header class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid w-1 border-bottom border-dark">
+        <a class="navbar-brand w-25" href="#"
+          ><img
+            class="img-fluid"
+            src="./assets/images/tech-logo-new.png"
+            alt="Tech-talent-logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav text-center">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-success">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-success">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-success">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="flex-grow-1">
+      <div
+        class="container bg-success bg-gradient d-flex justify-content-around align-items-center rounded-3 p-3 mt-3"
+      >
+        <h5 class="text-white w-50 fst-italic">
+          Unlock Your Potential in the World of Tech. Find Your dream Job with
+          our Tech Recruitment Agency
+        </h5>
+        <div class="p-3 border border-white rounded d-flex flex-column">
+          <h4 class="text-white">LOGIN</h4>
+          <form class="mb-3">
+            <div class="d-flex flex-column">
+              <label for="login-email">Email</label>
+              <input class="form-control rounded" type="email" />
+            </div>
+            <div class="d-flex flex-column">
+              <label for="">Password</label>
+              <input class="form-control rounded" type="password" />
+            </div>
+          </form>
+          <button class="rounded btn btn-lg btn-light">Login</button>
+        </div>
+      </div>
+
+      <div
+        class="container bg-success bg-gradient rounded-3 p-3 mt-3 d-flex justify-self-center"
+      >
+        <div class="w-50 text-center">
+          <h2 class="">New Here?</h2>
+          <h5 class="text-white fst-italic">
+            Discover endless career possibilities in the ever-evolving tech
+            industry.
+          </h5>
+        </div>
+        <div
+          class="text-center flex-grow-1 d-flex flex-column align-items-center gap-3"
+        >
+          <h4 class="text-white">REGISTER NOW</h4>
+          <button
+            class="rounded btn btn-light btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Register
+          </button>
+        </div>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Registration Form
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-wrapper d-flex">
+                  <form class="mb-3">
+                    <div class="d-flex flex-column mb-2">
+                      <label for="login-email">Email</label>
+                      <input
+                        class="form-control rounded border-success"
+                        type="email"
+                        name=""
+                        id="login-email"
+                      />
+                    </div>
+                    <div class="d-flex flex-column mb-2">
+                      <label>Password</label>
+                      <input
+                        class="form-control rounded border-success"
+                        type="password"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <label>Confirm Password</label>
+                      <input
+                        class="form-control rounded border-success"
+                        type="password"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-success">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-dark text-light text-center py-4 mt-4">
+      <div class="container">2023 my website, All rights reserved</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
