@@ -15,6 +15,7 @@ $query->fetch();
 $num_rows = $query->num_rows();
 if ($num_rows == 0) {
     $response['status'] = "user not found";
+    
 } else {
     if (password_verify($password, $hashed_password)) {
         $response['status'] = 'logged in';
