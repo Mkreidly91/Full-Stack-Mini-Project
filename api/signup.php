@@ -24,7 +24,7 @@ if($email_exists == 0){
   
 } else {
   $response['status'] = "failed";
-  $response['message'] = "Failed to sign up";
+  $response['message'] = "failed to sign up";
 }
 
 echo json_encode($response);

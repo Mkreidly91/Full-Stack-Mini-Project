@@ -11,14 +11,12 @@ window.onload = () => {
   const r_email_error = document.getElementById('r-email-error');
   const r_password_error = document.getElementById('r-password-error');
   const r_confirm_error = document.getElementById('r-confirm-error');
-
   const login_email = document.getElementById('login-email');
   const login_password = document.getElementById('login-password');
-
   const login_button = document.getElementById('login-button');
-
   const login_error = document.getElementById('login-error');
   const login_pass_error = document.getElementById('login-pass-error');
+  const success = document.getElementById('success');
 
   register_button.addEventListener('click', async () => {
     const email_value = register_email.value;
@@ -49,7 +47,14 @@ window.onload = () => {
         },
         body: JSON.stringify(user),
       });
-      const result = res.json();
+      const result = await res.json();
+      console.log(result);
+      console.log(success);
+      if (result.status === 'success') {
+        success.innerText = res.message;
+      } else if (result.status === 'failed') {
+        success.innerText = res.message;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +68,6 @@ window.onload = () => {
       login_pass_error.textContent = 'Please provide an password';
       return;
     }
-
     try {
       const user = {
         email: login_email.value,
@@ -76,14 +80,14 @@ window.onload = () => {
         },
         body: JSON.stringify(user),
       });
-      const result = res.json();
+      const result = await res.json();
       console.log(result);
       if (result.status === 'logged in') {
       } else if (result.status === 'user not found') {
         login_error.innerText = 'Invalid User';
       } else if (result.status === 'wrong password') {
         login_pass_error.innerText = 'Invalid Password';
-      } else {
+      } else if (result.status === 'logged in') {
         localStorage.setItem('email', user.email);
         window.location.href = 'welcome.html';
       }
