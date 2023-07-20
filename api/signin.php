@@ -1,7 +1,9 @@
 <?php
 include('connection.php');
-$email = $_POST['email'];
-$password = $_POST['password'];
+
+$data = json_decode(file_get_contents('php://input'), true);
+$email = $data['email'];
+$password = $data['password'];
 
 $query = $mysqli->prepare('select email,password
 from users 
@@ -15,13 +17,11 @@ $query->fetch();
 $num_rows = $query->num_rows();
 if ($num_rows == 0) {
     $response['status'] = "user not found";
-    
+
 } else {
     if (password_verify($password, $hashed_password)) {
         $response['status'] = 'logged in';
-        $response['user_id'] = $id;
-        $response['first_name'] = $first_name;
-        $response['email'] = $email;
+       
     } else {
         $response['status'] = "wrong password";
     }

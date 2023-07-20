@@ -18,6 +18,42 @@ window.onload = () => {
   const login_pass_error = document.getElementById('login-pass-error');
   const success = document.getElementById('success');
 
+  login_button.addEventListener('click', async () => {
+    if (!login_email.value) {
+      login_error.textContent = 'Please provide an email';
+      return;
+    } else if (!login_password.value) {
+      login_pass_error.textContent = 'Please provide an password';
+      return;
+    }
+    try {
+      const user = {
+        email: login_email.value,
+        password: login_password.value,
+      };
+      console.log(user.email);
+      const res = await fetch(signin_path, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      const result = await res.json();
+      console.log(result);
+      if (result.status === 'user not found') {
+        login_error.innerText = 'Invalid User';
+      } else if (result.status === 'wrong password') {
+        login_pass_error.innerText = 'Invalid Password';
+      } else if (result.status === 'logged in') {
+        localStorage.setItem('email', user.email);
+        window.location.href = 'welcome.html';
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
   register_button.addEventListener('click', async () => {
     const email_value = register_email.value;
     const password_value = register_password.value;
@@ -49,47 +85,10 @@ window.onload = () => {
       });
       const result = await res.json();
       console.log(result);
-      console.log(success);
       if (result.status === 'success') {
-        success.innerText = res.message;
+        success.innerText = result.message;
       } else if (result.status === 'failed') {
-        success.innerText = res.message;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  });
-
-  login_button.addEventListener('click', async () => {
-    if (!login_email.value) {
-      login_error.textContent = 'Please provide an email';
-      return;
-    } else if (!login_password.value) {
-      login_pass_error.textContent = 'Please provide an password';
-      return;
-    }
-    try {
-      const user = {
-        email: login_email.value,
-        password: login_password.value,
-      };
-      const res = await fetch(signin_path, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-      const result = await res.json();
-      console.log(result);
-      if (result.status === 'logged in') {
-      } else if (result.status === 'user not found') {
-        login_error.innerText = 'Invalid User';
-      } else if (result.status === 'wrong password') {
-        login_pass_error.innerText = 'Invalid Password';
-      } else if (result.status === 'logged in') {
-        localStorage.setItem('email', user.email);
-        window.location.href = 'welcome.html';
+        success.innerText = result.message;
       }
     } catch (error) {
       console.log(error);
